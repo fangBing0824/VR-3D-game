@@ -1,18 +1,26 @@
-body,html,div{
-    margin: 0;
-    padding: 0;
+:root {
+  --pixel-size: 24px;
+  --columns: 21;     
 }
-button{
-    width: 24px;
-    height: 24px;
-    border: 0px;
-    background-color: black;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.flex-wrap{
-    display: flex;
-    flex-wrap: wrap;
-    
+
+.pixel-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), var(--pixel-size));
+  gap: 0;
 }
+
+.pixel-grid button {
+  width: var(--pixel-size);
+  height: var(--pixel-size);
+  border: 0;
+  padding: 0;
+  background: black;
+  cursor: pointer;
+}
+
