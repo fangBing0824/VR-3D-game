@@ -1,3 +1,5 @@
+let rnd = (l,u) => Math.random() * (u-l) + l
+
 window.addEventListener('load', () => {
   const startBtn = document.querySelector('#startBtn');
 
@@ -15,3 +17,4 @@ AFRAME.registerComponent('start-button', {
     });
   }
 });
+
