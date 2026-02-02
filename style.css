@@ -1,29 +1,75 @@
-:root {
-  --pixel-size: 24px;
-  --columns: 21;     
-}
+body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+        .game-info {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            font-size: 18px;
+        }
 
-.pixel-grid {
-  display: grid;
-  grid-template-columns: repeat(var(--columns), var(--pixel-size));
-  gap: 0;
-}
+        .game-info div {
+            margin: 5px 0;
+        }
 
-.pixel-grid button {
-  width: var(--pixel-size);
-  height: var(--pixel-size);
-  border: 0;
-  padding: 0;
-  background: black;
-  cursor: pointer;
-}
+        .pixel-grid {
+            display: grid;
+            grid-template-columns: repeat(21, 20px);
+            gap: 2px;
+            width: fit-content;
+            margin: 100px auto;
+            position: relative;
+            z-index: 100;
+            background: #ddd;
+            padding: 10px;
+            border-radius: 8px;
+        }
 
-button.wrong {
-  background-color: brown;
-}
+        .pixel-grid button {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #999;
+            padding: 0;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .pixel-grid button:hover {
+            transform: scale(1.2);
+            border: 2px solid #000;
+        }
+
+        .pixel-grid button:active {
+            transform: scale(0.9);
+        }
+
+        .target {
+            cursor: pointer !important;
+            position: relative;
+        }
+
+        .target:hover {
+            box-shadow: 0 0 10px gold !important;
+        }
+
+        .cookieOut {
+            cursor: pointer !important;
+        }
+
+        .wrong {
+            cursor: pointer !important;
+        }
+
+        /* Hide A-Frame scene initially */
+        a-scene {
+            display: none;
+        }
