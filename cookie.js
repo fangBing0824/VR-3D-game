@@ -1,22 +1,16 @@
 window.addEventListener('DOMContentLoaded', function() {
     console.log("Game script starting...");
     
-    let t = 25;
+    let t = 15;
     let gameOver = false;
     let clickedCount = 0;
     let timeoutId;
     let brownButtonsClicked = 0;
 
-    // Get display elements
-    const timeDisplay = document.getElementById('time-display');
-    const countDisplay = document.getElementById('count-display');
-    const statusDisplay = document.getElementById('status-display');
-
-    console.log("Elements found:", {
-        timeDisplay: !!timeDisplay,
-        countDisplay: !!countDisplay,
-        statusDisplay: !!statusDisplay
-    });
+    
+    let timeDisplay = document.getElementById('time-display');
+    let countDisplay = document.getElementById('count-display');
+    let statusDisplay = document.getElementById('status-display');
 
     // Timer function
     function countdown() {
@@ -48,31 +42,31 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     //target buttons
-    const allButtons = document.querySelectorAll('.pixel-grid button');
-    const brownButtons = [];
+    let allButtons = document.querySelectorAll('.pixel-grid button');
+    let brownButtons = [];
     
     allButtons.forEach((button) => {
-        if (button.style.backgroundColor === 'brown') {
+        if (button.style.backgroundColor === 'rgb(184, 116, 34)') {
             brownButtons.push(button);
         }
     });
 
-    const totalBrownButtons = brownButtons.length;
-    console.log("Total brown target buttons:", totalBrownButtons);
+    let totalBrownButtons = brownButtons.length;
+    // console.log("Total brown target buttons:", totalBrownButtons);
 
     if (statusDisplay) {
         statusDisplay.textContent = `Find ${totalBrownButtons} brown cookies!`;
     }
 
-    // 给每个棕色按钮添加点击事件
+    
     brownButtons.forEach((button, index) => {
         button.addEventListener("click", function(e) {
-            console.log("Brown button clicked:", index);
+            //console.log("Brown button clicked:", index);
             if (gameOver) return;
             
-            // 如果这个按钮还没被点击过（还是棕色）
-            if (this.style.backgroundColor === 'brown') {
-                // 变成白色
+            
+            if (this.style.backgroundColor === 'rgb(184, 116, 34)') {
+                
                 this.style.backgroundColor = 'white';
                 brownButtonsClicked++;
                 clickedCount++;
@@ -83,7 +77,7 @@ window.addEventListener('DOMContentLoaded', function() {
                     countDisplay.textContent = `Progress: ${brownButtonsClicked}/${totalBrownButtons}`;
                 }
                 
-                // 检查是否全部点击完
+                
                 if (brownButtonsClicked === totalBrownButtons) {
                     endGame(`🎉 YOU WIN! Time left: ${t}s, Total clicks: ${clickedCount}`);
                 }
@@ -91,20 +85,20 @@ window.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // COOKIE OUT BUTTONS - Lose condition (红色按钮)
-    const cookieOuts = document.querySelectorAll(".cookieOut");
-    console.log("CookieOut buttons (red) found:", cookieOuts.length);
+    // COOKIE OUT BUTTONS 
+    let cookieOuts = document.querySelectorAll(".cookieOut");
+    //console.log("CookieOut buttons (red) found:", cookieOuts.length);
     
     cookieOuts.forEach((button, index) => {
         button.addEventListener("click", function(e) {
             console.log("CookieOut button clicked:", index);
             if (gameOver) return;
             clickedCount++;
-            endGame("❌ You clicked outside the cookie! GAME OVER!");
+            endGame("❌ You Break The Shape! GAME OVER! You Die!");
         });
     });
 
     // Start the game
-    console.log("Starting countdown...");
+    // console.log("Starting countdown...");
     countdown();
 });
