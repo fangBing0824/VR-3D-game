@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', function() {
     console.log("Game script starting...");
     
-    let t = 15;
+    let t = 20;
     let gameOver = false;
     let clickedCount = 0;
     let timeoutId;
@@ -80,6 +80,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 
                 if (brownButtonsClicked === totalBrownButtons) {
                     endGame(`🎉 YOU WIN! Time left: ${t}s, Total clicks: ${clickedCount}`);
+                    
                 }
             }
         });
