@@ -1,3 +1,16 @@
+let bgMusic;
+
+window.addEventListener('DOMContentLoaded', function() {
+    bgMusic = document.getElementById("bgMusic");
+});
+
+document.addEventListener("click", () => {
+    if (bgMusic && bgMusic.paused) {
+        bgMusic.volume = 0.5;
+        bgMusic.play();
+    }
+}, { once: true });
+
 window.addEventListener('DOMContentLoaded', function() {
     console.log("Game script starting...");
     
